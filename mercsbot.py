@@ -5,8 +5,8 @@ import asyncio
 import datetime
 import time
 from threading import Thread
-from asyncio.futures import _set_result_unless_cancelled
 import discord
+from discord.enums import ContentFilter
 from discord_buttons_plugin import *
 from dotenv import load_dotenv
 load_dotenv()
@@ -41,7 +41,14 @@ async def button_gt1(ctx):
 async def button_gt2(ctx):
     global gt2
     gt2 -= 1
-    
+@buttons.click
+async def ogre_minus_three(ctx):
+    global ogre
+    ogre -= 3
+@buttons.click
+async def ogre_minus_30(ctx):
+    global ogre
+    ogre -= 30
     
 @bot.event
 async def on_ready(message):
@@ -88,6 +95,16 @@ async def on_message(message):
                     style = ButtonType().Primary,
                     custom_id = "button_gt2"
                     ),
+                Button(
+                    label = "Ogre -3",
+                    style = ButtonType().Primary,
+                    custom_id = "ogre_minus_three"
+                    ),
+                Button(
+                    label = "Ogre -30",
+                    style = ButtonType().Primary,
+                    custom_id = "ogre_minus_30"
+                    ),
                 ])])
         button2 = await buttons.send(
         content = "Test",
@@ -109,6 +126,16 @@ async def on_message(message):
                     style = ButtonType().Primary,
                     custom_id = "button_gt2"
                     ),
+                Button(
+                    label = "Ogre -3",
+                    style = ButtonType().Primary,
+                    custom_id = "ogre_minus_three"
+                    ),
+                Button(
+                    label = "Ogre -30",
+                    style = ButtonType().Primary,
+                    custom_id = "ogre_minus_30"
+                    ),
                 ])])
         button3 = await buttons.send(
         content = "Test",
@@ -129,6 +156,16 @@ async def on_message(message):
                     label = "Guard Tower 2",
                     style = ButtonType().Primary,
                     custom_id = "button_gt2"
+                    ),
+                Button(
+                    label = "Ogre -3",
+                    style = ButtonType().Primary,
+                    custom_id = "ogre_minus_three"
+                    ),
+                Button(
+                    label = "Ogre -30",
+                    style = ButtonType().Primary,
+                    custom_id = "ogre_minus_30"
                     ),
                 ])])
         embedVar = discord.Embed(title="HP", description="This shows the HP of OUR structures! *and fuck jacob*", color=0x00ff00)
@@ -204,7 +241,7 @@ async def on_message(message):
         
         await message.delete()
     elif message.content.startswith('!ogre'):
-        ogre = 603
+        ogre = 606
         embedVar = discord.Embed(title="HP", description="This shows the HP of OUR structures! *and fuck jacob*", color=0x00ff00)
         embedVar.add_field(name="Guard Tower 1", value=gt1, inline=False)
         embedVar.add_field(name="Guard Tower 2", value=gt2, inline=False)
@@ -220,6 +257,7 @@ async def on_message(message):
         embedVar.add_field(name="Fuck Jacob", value="Fuck Jacob", inline=False)
         await message.delete()
         await message2.edit(embed=embedVar)
+    
 
 
     
