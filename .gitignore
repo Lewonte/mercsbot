@@ -4,3 +4,7 @@
 .vs/PythonApplication1/v17/.suo
 *.pyproj
 *.sln
+.idea/workspace.xml
+.vs/mercsbot/v16/.suo
+.vs/slnx.sqlite
+.vs/VSWorkspaceState.json
